@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AnimaType — Take the Test</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Orbitron:wght@400;600;700;900&family=Syne:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+</head>
+<body class="app-body">
+
+  <!-- Aurora Background -->
+  <div class="aurora-bg">
+    <div class="aurora-blob blob-1"></div>
+    <div class="aurora-blob blob-2"></div>
+    <div class="aurora-blob blob-3"></div>
+    <div class="aurora-blob blob-4"></div>
+  </div>
+
+  <!-- Top Nav -->
+  <nav class="navbar glass-panel">
+    <a href="index.html" class="nav-logo">
+      <span class="logo-icon">⛩</span>
+      <span class="logo-text">Anima<span class="accent-violet">Type</span></span>
+    </a>
+    <div class="nav-right">
+      <div class="nav-step-label" id="navStepLabel">Step 1 of 4</div>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme" onclick="toggleTheme()">🌙</button>
+    </div>
+  </nav>
+
+  <!-- Sticky Progress Bar -->
+  <div class="progress-bar-wrap">
+    <div class="progress-steps">
+      <div class="progress-step active" data-step="1">
+        <div class="ps-circle">1</div>
+        <div class="ps-label">Details</div>
+      </div>
+      <div class="progress-line"></div>
+      <div class="progress-step" data-step="2">
+        <div class="ps-circle">2</div>
+        <div class="ps-label">MBTI Test</div>
+      </div>
+      <div class="progress-line"></div>
+      <div class="progress-step" data-step="3">
+        <div class="ps-circle">3</div>
+        <div class="ps-label">Extras</div>
+      </div>
+      <div class="progress-line"></div>
+      <div class="progress-step" data-step="4">
+        <div class="ps-circle">4</div>
+        <div class="ps-label">Questions</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main App Container -->
+  <main class="app-main">
+
+    <!-- ====== STEP 1: Basic Details ====== -->
+    <div class="step-panel active" id="step1">
+      <div class="step-header">
+        <h2 class="step-title">Tell Us About <span class="accent-violet">Yourself</span></h2>
+        <p class="step-desc">We'll use this to find your perfect anime personality match.</p>
+      </div>
+      <div class="form-glass glass-card">
+        <div class="form-group">
+          <label class="form-label">Your Name</label>
+          <input type="text" class="form-input" id="userName" placeholder="e.g. Yuki, Alex, Ryo..." maxlength="30"/>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Your Age</label>
+          <input type="number" class="form-input" id="userAge" placeholder="e.g. 21" min="10" max="99"/>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Gender</label>
+          <div class="gender-select">
+            <button class="gender-btn" data-gender="Male">♂ Male</button>
+            <button class="gender-btn" data-gender="Female">♀ Female</button>
+            <button class="gender-btn" data-gender="Other">⚡ Other</button>
+          </div>
+        </div>
+        <div class="form-error" id="step1Error"></div>
+        <button class="btn-primary glow-btn full-btn" onclick="goToStep(2)">Continue →</button>
+      </div>
+    </div>
+
+    <!-- ====== STEP 2: MBTI Questions ====== -->
+    <div class="step-panel" id="step2">
+      <div class="step-header">
+        <h2 class="step-title">The <span class="accent-cyan">MBTI</span> Questionnaire</h2>
+        <p class="step-desc">Slide each bar to reflect how much the statement resonates with you. 1 = Not at all, 10 = Completely.</p>
+      </div>
+      <div class="mbti-progress-info">
+        <span id="mbtiQNum">Question 1 of 15</span>
+        <div class="mbti-mini-bar">
+          <div class="mbti-mini-fill" id="mbtiFill"></div>
+        </div>
+      </div>
+      <div class="questions-container" id="questionsContainer"></div>
+      <div class="step-nav">
+        <button class="btn-ghost" onclick="goToStep(1)">← Back</button>
+        <button class="btn-primary glow-btn" onclick="goToStep(3)">Next Step →</button>
+      </div>
+    </div>
+
+    <!-- ====== STEP 3: Extras ====== -->
+    <div class="step-panel" id="step3">
+      <div class="step-header">
+        <h2 class="step-title">Personality <span class="accent-rose">Extras</span></h2>
+        <p class="step-desc">These details help the AI understand your vibe more deeply.</p>
+      </div>
+      <div class="form-glass glass-card">
+        <div class="form-group">
+          <label class="form-label">Your Favorite Color</label>
+          <div class="color-picker-wrap">
+            <input type="color" class="color-picker" id="favColor" value="#8b5cf6"/>
+            <span class="color-label" id="colorLabel">#8b5cf6</span>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Your Top Hobbies <span class="label-hint">(pick up to 3)</span></label>
+          <div class="hobby-tags" id="hobbyTags">
+            <button class="hobby-tag" data-hobby="Gaming">🎮 Gaming</button>
+            <button class="hobby-tag" data-hobby="Reading">📚 Reading</button>
+            <button class="hobby-tag" data-hobby="Drawing">✏️ Drawing</button>
+            <button class="hobby-tag" data-hobby="Music">🎵 Music</button>
+            <button class="hobby-tag" data-hobby="Sports">⚽ Sports</button>
+            <button class="hobby-tag" data-hobby="Cooking">🍳 Cooking</button>
+            <button class="hobby-tag" data-hobby="Writing">📝 Writing</button>
+            <button class="hobby-tag" data-hobby="Travel">✈️ Travel</button>
+            <button class="hobby-tag" data-hobby="Photography">📷 Photography</button>
+            <button class="hobby-tag" data-hobby="Anime/Manga">🌸 Anime/Manga</button>
+            <button class="hobby-tag" data-hobby="Technology">💻 Technology</button>
+            <button class="hobby-tag" data-hobby="Meditation">🧘 Meditation</button>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Favorite Anime Genre</label>
+          <select class="form-select" id="animeGenre">
+            <option value="">-- Select a genre --</option>
+            <option value="Shonen">Shonen (Action/Adventure)</option>
+            <option value="Shojo">Shojo (Romance/Drama)</option>
+            <option value="Seinen">Seinen (Mature/Psychological)</option>
+            <option value="Isekai">Isekai (Another World)</option>
+            <option value="Mecha">Mecha (Giant Robots)</option>
+            <option value="Slice of Life">Slice of Life</option>
+            <option value="Dark Fantasy">Dark Fantasy / Horror</option>
+            <option value="Sci-Fi">Sci-Fi / Cyberpunk</option>
+            <option value="Sports">Sports</option>
+            <option value="Mystery / Thriller">Mystery / Thriller</option>
+          </select>
+        </div>
+        <div class="form-error" id="step3Error"></div>
+        <div class="step-nav">
+          <button class="btn-ghost" onclick="goToStep(2)">← Back</button>
+          <button class="btn-primary glow-btn" onclick="goToStep(4)">Next Step →</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ====== STEP 4: Open Questions ====== -->
+    <div class="step-panel" id="step4">
+      <div class="step-header">
+        <h2 class="step-title">Soul <span class="accent-violet">Resonance</span></h2>
+        <p class="step-desc">Optional questions that help the AI find your deepest anime match. Answer freely — there are no wrong answers.</p>
+      </div>
+      <div class="form-glass glass-card">
+        <div class="form-group">
+          <label class="form-label">Describe your ideal world in one sentence <span class="label-hint">(optional)</span></label>
+          <div class="textarea-wrap">
+            <textarea class="form-textarea" id="openQ1" maxlength="150" placeholder="e.g. A world where everyone can live freely without fear..."></textarea>
+            <div class="char-counter"><span id="q1Count">0</span>/150</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">What drives you most — logic, emotion, or instinct? <span class="label-hint">(optional)</span></label>
+          <div class="textarea-wrap">
+            <textarea class="form-textarea" id="openQ2" maxlength="150" placeholder="e.g. Emotion drives me — I can't ignore how things feel to the people involved..."></textarea>
+            <div class="char-counter"><span id="q2Count">0</span>/150</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">How do others usually describe you? <span class="label-hint">(optional)</span></label>
+          <div class="textarea-wrap">
+            <textarea class="form-textarea" id="openQ3" maxlength="150" placeholder="e.g. They say I'm quiet but surprising when I speak..."></textarea>
+            <div class="char-counter"><span id="q3Count">0</span>/150</div>
+          </div>
+        </div>
+
+        <div class="form-error" id="step4Error"></div>
+        <div class="step-nav">
+          <button class="btn-ghost" onclick="goToStep(3)">← Back</button>
+          <button class="btn-primary glow-btn submit-btn" id="submitBtn" onclick="submitForm()">
+            <span id="submitBtnText">✦ Reveal My Anime Soul</span>
+            <div class="btn-loader" id="btnLoader" style="display:none">
+              <div class="loader-dots"><span></span><span></span><span></span></div>
+            </div>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ====== RESULT CARD ====== -->
+    <div class="step-panel" id="stepResult">
+      <div class="step-header">
+        <h2 class="step-title">Your <span class="gradient-text">Anime Self</span> Has Been Found</h2>
+      </div>
+
+      <div class="result-wrap" id="resultWrap">
+        <div class="result-card glass-card" id="resultCard">
+          <!-- Dynamic content injected by JS -->
+        </div>
+      </div>
+
+      <div class="result-actions">
+        <button class="btn-primary glow-btn" onclick="downloadCard()">⬇ Download Card</button>
+        <button class="btn-ghost" onclick="resetApp()">↺ Take Again</button>
+      </div>
+    </div>
+
+  </main>
+
+  <script src="config.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

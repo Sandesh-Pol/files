@@ -1,0 +1,11 @@
+# Environment variables
+.env
+config.js
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db

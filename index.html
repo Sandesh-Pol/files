@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AnimaType — Discover Your Anime Soul</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Orbitron:wght@400;600;700;900&family=Syne:wght@400;500;600;700&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body class="landing-body">
+
+  <!-- Aurora Background -->
+  <div class="aurora-bg">
+    <div class="aurora-blob blob-1"></div>
+    <div class="aurora-blob blob-2"></div>
+    <div class="aurora-blob blob-3"></div>
+    <div class="aurora-blob blob-4"></div>
+  </div>
+
+  <!-- Navbar -->
+  <nav class="navbar glass-panel">
+    <div class="nav-logo">
+      <span class="logo-icon">⛩</span>
+      <span class="logo-text">Anima<span class="accent-violet">Type</span></span>
+    </div>
+    <div class="nav-links">
+      <a href="#about">About MBTI</a>
+      <a href="#types">Types</a>
+      <a href="#characters">Characters</a>
+      <a href="app.html" class="btn-nav-cta">Start Test →</a>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme" onclick="toggleTheme()"><i class="fas fa-moon"></i></button>
+      <button class="mobile-close" id="mobileClose" aria-label="Close menu"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="nav-right">
+      <button class="nav-hamburger" id="hamburger" aria-label="Menu"><i class="fas fa-bars"></i></button>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="hero-content">
+      <div class="hero-badge glass-pill">✦ Personality × Anime Universe</div>
+      <h1 class="hero-title">
+        Discover Your<br />
+        <span class="gradient-text">Anime Soul</span>
+      </h1>
+      <p class="hero-subtitle">
+        Take a deep personality journey through MBTI dimensions and find the anime character who mirrors your very
+        essence — down to their fighting style, ideals, and heart.
+      </p>
+      <div class="hero-cta-group">
+        <a href="app.html" class="btn-primary glow-btn">Begin Your Journey</a>
+        <a href="#about" class="btn-ghost">Learn About MBTI ↓</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat-pill"><span class="stat-num">16</span><span class="stat-label">Personality Types</span></div>
+        <div class="stat-pill"><span class="stat-num">200+</span><span class="stat-label">Anime Characters</span></div>
+        <div class="stat-pill"><span class="stat-num">15</span><span class="stat-label">Questions</span></div>
+      </div>
+    </div>
+    <div class="hero-illustration">
+      <div class="hero-img-frame glass-card">
+        <div class="hero-character-showcase">
+          <div class="char-float char-1">
+            <img src="images/naruto_uzumaki.jpg" alt="Naruto" />
+            <div class="char-placeholder" style="display:none">🍥</div>
+            <div class="char-label">Naruto · ENFP</div>
+          </div>
+          <div class="char-float char-2">
+            <img src="images/levi_ackerman.jpg" alt="Levi" />
+            <div class="char-placeholder" style="display:none">⚔️</div>
+            <div class="char-label">Levi · ISTP</div>
+          </div>
+          <div class="char-float char-3">
+            <img src="images/itachi_uchiha.jpg" alt="Itachi Uchiha" />
+            <div class="char-placeholder" style="display:none">🔮</div>
+            <div class="char-label">Itachi · INTJ</div>
+          </div>
+          <div class="char-float char-4">
+            <img src="images/hinata_hyuga.jpg" alt="Hinata" />
+            <div class="char-placeholder" style="display:none">🌸</div>
+            <div class="char-label">Hinata · ISFJ</div>
+          </div>
+          <div class="center-orb">
+            <span class="orb-text">?</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About MBTI Section -->
+  <section class="about-section" id="about">
+    <div class="section-header">
+      <h2 class="section-title">The Science Behind <span class="accent-cyan">Your Personality</span></h2>
+      <p class="section-desc">The Myers-Briggs Type Indicator measures four core dimensions of human personality,
+        creating 16 unique types — each with its own strengths, patterns, and quirks.</p>
+    </div>
+    <div class="mbti-dimensions-grid">
+      <div class="dimension-card glass-card">
+        <div class="dim-header">
+          <span class="dim-letters"><span class="accent-violet">E</span> / <span class="accent-rose">I</span></span>
+          <div class="dim-icon">🌊</div>
+        </div>
+        <h3>Energy Direction</h3>
+        <div class="dim-row">
+          <div class="dim-type extrovert">
+            <div class="dim-badge">Extrovert</div>
+            <p>Energized by people and social interaction. Thinks out loud. Prefers a wide network.</p>
+          </div>
+          <div class="dim-vs">VS</div>
+          <div class="dim-type introvert">
+            <div class="dim-badge">Introvert</div>
+            <p>Energized by solitude and reflection. Thinks before speaking. Deep connections.</p>
+          </div>
+        </div>
+      </div>
+      <div class="dimension-card glass-card">
+        <div class="dim-header">
+          <span class="dim-letters"><span class="accent-cyan">S</span> / <span class="accent-violet">N</span></span>
+          <div class="dim-icon">👁</div>
+        </div>
+        <h3>Information Processing</h3>
+        <div class="dim-row">
+          <div class="dim-type sensor">
+            <div class="dim-badge">Sensing</div>
+            <p>Focuses on concrete facts, present reality, and practical details.</p>
+          </div>
+          <div class="dim-vs">VS</div>
+          <div class="dim-type intuitive">
+            <div class="dim-badge">Intuitive</div>
+            <p>Focuses on patterns, possibilities, future potential, and abstract ideas.</p>
+          </div>
+        </div>
+      </div>
+      <div class="dimension-card glass-card">
+        <div class="dim-header">
+          <span class="dim-letters"><span class="accent-rose">T</span> / <span class="accent-cyan">F</span></span>
+          <div class="dim-icon">⚖️</div>
+        </div>
+        <h3>Decision Making</h3>
+        <div class="dim-row">
+          <div class="dim-type thinker">
+            <div class="dim-badge">Thinking</div>
+            <p>Decides based on logic, analysis, and objective criteria.</p>
+          </div>
+          <div class="dim-vs">VS</div>
+          <div class="dim-type feeler">
+            <div class="dim-badge">Feeling</div>
+            <p>Decides based on values, empathy, and impact on people.</p>
+          </div>
+        </div>
+      </div>
+      <div class="dimension-card glass-card">
+        <div class="dim-header">
+          <span class="dim-letters"><span class="accent-violet">J</span> / <span class="accent-rose">P</span></span>
+          <div class="dim-icon">🗓</div>
+        </div>
+        <h3>Lifestyle Approach</h3>
+        <div class="dim-row">
+          <div class="dim-type judger">
+            <div class="dim-badge">Judging</div>
+            <p>Prefers structure, plans, and decisive closure.</p>
+          </div>
+          <div class="dim-vs">VS</div>
+          <div class="dim-type perceiver">
+            <div class="dim-badge">Perceiving</div>
+            <p>Prefers flexibility, spontaneity, and open options.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 16 Types Section -->
+  <section class="types-section" id="types">
+    <div class="section-header">
+      <h2 class="section-title">Every Type Has Its <span class="accent-rose">Anime Echo</span></h2>
+    </div>
+    <div class="types-grid">
+      <!-- Analysts -->
+      <div class="type-group">
+        <div class="group-label analysts">⚡ Analysts</div>
+        <div class="type-card glass-card analysts-bg" onclick="highlightType(this)">
+          <div class="type-code">INTJ</div>
+          <div class="type-name">The Architect</div>
+          <div class="type-anime">Light Yagami · Sasuke</div>
+        </div>
+        <div class="type-card glass-card analysts-bg" onclick="highlightType(this)">
+          <div class="type-code">INTP</div>
+          <div class="type-name">The Logician</div>
+          <div class="type-anime">L Lawliet · Senku</div>
+        </div>
+        <div class="type-card glass-card analysts-bg" onclick="highlightType(this)">
+          <div class="type-code">ENTJ</div>
+          <div class="type-name">The Commander</div>
+          <div class="type-anime">Erwin Smith · Aizen</div>
+        </div>
+        <div class="type-card glass-card analysts-bg" onclick="highlightType(this)">
+          <div class="type-code">ENTP</div>
+          <div class="type-name">The Debater</div>
+          <div class="type-anime">Hisoka · Izaya</div>
+        </div>
+      </div>
+      <!-- Diplomats -->
+      <div class="type-group">
+        <div class="group-label diplomats">🌸 Diplomats</div>
+        <div class="type-card glass-card diplomats-bg" onclick="highlightType(this)">
+          <div class="type-code">INFJ</div>
+          <div class="type-name">The Advocate</div>
+          <div class="type-anime">Nagato · Violet</div>
+        </div>
+        <div class="type-card glass-card diplomats-bg" onclick="highlightType(this)">
+          <div class="type-code">INFP</div>
+          <div class="type-name">The Mediator</div>
+          <div class="type-anime">Kaneki Ken · Shinji</div>
+        </div>
+        <div class="type-card glass-card diplomats-bg" onclick="highlightType(this)">
+          <div class="type-code">ENFJ</div>
+          <div class="type-name">The Protagonist</div>
+          <div class="type-anime">Deku · Tanjiro</div>
+        </div>
+        <div class="type-card glass-card diplomats-bg" onclick="highlightType(this)">
+          <div class="type-code">ENFP</div>
+          <div class="type-name">The Campaigner</div>
+          <div class="type-anime">Naruto · Luffy</div>
+        </div>
+      </div>
+      <!-- Sentinels -->
+      <div class="type-group">
+        <div class="group-label sentinels">🛡 Sentinels</div>
+        <div class="type-card glass-card sentinels-bg" onclick="highlightType(this)">
+          <div class="type-code">ISTJ</div>
+          <div class="type-name">The Logistician</div>
+          <div class="type-anime">Mikasa · Byakuya</div>
+        </div>
+        <div class="type-card glass-card sentinels-bg" onclick="highlightType(this)">
+          <div class="type-code">ISFJ</div>
+          <div class="type-name">The Defender</div>
+          <div class="type-anime">Rem · Hinata</div>
+        </div>
+        <div class="type-card glass-card sentinels-bg" onclick="highlightType(this)">
+          <div class="type-code">ESTJ</div>
+          <div class="type-name">The Executive</div>
+          <div class="type-anime">Endeavor · Nanami</div>
+        </div>
+        <div class="type-card glass-card sentinels-bg" onclick="highlightType(this)">
+          <div class="type-code">ESFJ</div>
+          <div class="type-name">The Consul</div>
+          <div class="type-anime">Uraraka · Mitsuki</div>
+        </div>
+      </div>
+      <!-- Explorers -->
+      <div class="type-group">
+        <div class="group-label explorers">🔥 Explorers</div>
+        <div class="type-card glass-card explorers-bg" onclick="highlightType(this)">
+          <div class="type-code">ISTP</div>
+          <div class="type-name">The Virtuoso</div>
+          <div class="type-anime">Levi · Guts</div>
+        </div>
+        <div class="type-card glass-card explorers-bg" onclick="highlightType(this)">
+          <div class="type-code">ISFP</div>
+          <div class="type-name">The Adventurer</div>
+          <div class="type-anime">Sasha · Winry</div>
+        </div>
+        <div class="type-card glass-card explorers-bg" onclick="highlightType(this)">
+          <div class="type-code">ESTP</div>
+          <div class="type-name">The Entrepreneur</div>
+          <div class="type-anime">Bakugo · Jiraiya</div>
+        </div>
+        <div class="type-card glass-card explorers-bg" onclick="highlightType(this)">
+          <div class="type-code">ESFP</div>
+          <div class="type-name">The Entertainer</div>
+          <div class="type-anime">Mina · Brook</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Characters Showcase -->
+  <section class="characters-section" id="characters">
+    <div class="section-header">
+      <h2 class="section-title">Iconic Souls <span class="accent-violet">Await You</span></h2>
+    </div>
+    <div class="characters-scroll" id="charScrollList">
+      <!-- 1 -->
+      <div class="char-showcase-card glass-card">
+        <div class="char-img-wrap">
+          <img src="images/naruto_uzumaki.jpg" alt="Naruto Uzumaki" />
+        </div>
+        <div class="char-info">
+          <div class="char-type-badge enfp">ENFP</div>
+          <div class="char-show-name">Naruto Uzumaki</div>
+          <div class="char-series">Naruto</div>
+          <div class="char-traits-mini">
+            <span>Determined</span><span>Optimistic</span><span>Loyal</span>
+          </div>
+        </div>
+      </div>
+      <!-- 2 -->
+      <div class="char-showcase-card glass-card">
+        <div class="char-img-wrap">
+          <img src="images/itachi_uchiha.jpg" alt="Itachi Uchiha" />
+        </div>
+        <div class="char-info">
+          <div class="char-type-badge infj">INFJ</div>
+          <div class="char-show-name">Itachi Uchiha</div>
+          <div class="char-series">Naruto</div>
+          <div class="char-traits-mini">
+            <span>Strategic</span><span>Sacrificial</span><span>Calm</span>
+          </div>
+        </div>
+      </div>
+      <!-- 3 -->
+      <div class="char-showcase-card glass-card">
+        <div class="char-img-wrap">
+          <img src="images/levi_ackerman.jpg" alt="Levi Ackerman" />
+        </div>
+        <div class="char-info">
+          <div class="char-type-badge istp">ISTP</div>
+          <div class="char-show-name">Levi Ackerman</div>
+          <div class="char-series">Attack on Titan</div>
+          <div class="char-traits-mini">
+            <span>Precise</span><span>Stoic</span><span>Fierce</span>
+          </div>
+        </div>
+      </div>
+      <!-- 4 -->
+      <div class="char-showcase-card glass-card">
+        <div class="char-img-wrap">
+          <img src="images/hinata_hyuga.jpg" alt="Hinata Hyuga" />
+        </div>
+        <div class="char-info">
+          <div class="char-type-badge infp">INFP</div>
+          <div class="char-show-name">Hinata Hyuga</div>
+          <div class="char-series">Naruto</div>
+          <div class="char-traits-mini">
+            <span>Devoted</span><span>Gentle</span><span>Strong</span>
+          </div>
+        </div>
+      </div>
+      <!-- 5 -->
+      <div class="char-showcase-card glass-card">
+        <div class="char-img-wrap">
+          <img src="images/satoru_gojo.jpg" alt="Satoru Gojo" />
+        </div>
+        <div class="char-info">
+          <div class="char-type-badge entp">ENTP</div>
+          <div class="char-show-name">Satoru Gojo</div>
+          <div class="char-series">Jujutsu Kaisen</div>
+          <div class="char-traits-mini">
+            <span>Confident</span><span>Playful</span><span>Overpowered</span>
+          </div>
+        </div>
+      </div>
+      <!-- 6 -->
+      <div class="char-showcase-card glass-card">
+        <div class="char-img-wrap">
+          <img src="images/mikasa_ackerman.jpg" alt="Mikasa Ackerman" />
+        </div>
+        <div class="char-info">
+          <div class="char-type-badge istj">ISTJ</div>
+          <div class="char-show-name">Mikasa Ackerman</div>
+          <div class="char-series">Attack on Titan</div>
+          <div class="char-traits-mini">
+            <span>Resolute</span><span>Protective</span><span>Silent</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- MORE ITEMS (Hidden by default via JS or CSS class) -->
+      <!-- 7 -->
+      <div class="char-showcase-card glass-card char-hidden" style="display:none">
+        <div class="char-img-wrap">
+          <img src="images/kakashi_hatake.jpg" alt="Kakashi Hatake" />
+        </div>
+        <div class="char-info">
+          <div class="char-type-badge intp">INTP</div>
+          <div class="char-show-name">Kakashi Hatake</div>
+          <div class="char-series">Naruto</div>
+          <div class="char-traits-mini">
+            <span>Analytical</span><span>Independent</span><span>Reserved</span>
+          </div>
+        </div>
+      </div>
+      <!-- 8 -->
+      <div class="char-showcase-card glass-card char-hidden" style="display:none">
+        <div class="char-img-wrap">
+          <img src="images/sasuke_uchiha.jpg" alt="Sasuke Uchiha" />
+        </div>
+        <div class="char-info">
+          <div class="char-type-badge intj">INTJ</div>
+          <div class="char-show-name">Sasuke Uchiha</div>
+          <div class="char-series">Naruto</div>
+          <div class="char-traits-mini">
+            <span>Driven</span><span>Intense</span><span>Independent</span>
+          </div>
+        </div>
+      </div>
+      <!-- 9 -->
+      <div class="char-showcase-card glass-card char-hidden" style="display:none">
+        <div class="char-img-wrap">
+          <img src="images/tanjiro_kamado.jpg" alt="Tanjiro Kamado" />
+        </div>
+        <div class="char-info">
+          <div class="char-type-badge enfj">ENFJ</div>
+          <div class="char-show-name">Tanjiro Kamado</div>
+          <div class="char-series">Demon Slayer</div>
+          <div class="char-traits-mini">
+            <span>Empathetic</span><span>Determined</span><span>Kind</span>
+          </div>
+        </div>
+      </div>
+      <!-- 10 -->
+      <div class="char-showcase-card glass-card char-hidden" style="display:none">
+        <div class="char-img-wrap">
+          <img src="images/eren_yeager.jpg" alt="Eren Yeager" />
+        </div>
+        <div class="char-info">
+          <div class="char-type-badge isfp">ISFP</div>
+          <div class="char-show-name">Eren Yeager</div>
+          <div class="char-series">Attack on Titan</div>
+          <div class="char-traits-mini">
+            <span>Passionate</span><span>Rebellious</span><span>Intense</span>
+          </div>
+        </div>
+      </div>
+      <!-- 11 -->
+      <div class="char-showcase-card glass-card char-hidden" style="display:none">
+        <div class="char-img-wrap">
+          <img src="images/rock_lee.jpg" alt="Rock Lee" />
+        </div>
+        <div class="char-info">
+          <div class="char-type-badge esfj">ESFJ</div>
+          <div class="char-show-name">Rock Lee</div>
+          <div class="char-series">Naruto</div>
+          <div class="char-traits-mini">
+            <span>Hardworking</span><span>Enthusiastic</span><span>Loyal</span>
+          </div>
+        </div>
+      </div>
+      <!-- 12 -->
+      <div class="char-showcase-card glass-card char-hidden" style="display:none">
+        <div class="char-img-wrap">
+          <img src="images/erwin_smith.jpg" alt="Erwin Smith" />
+        </div>
+        <div class="char-info">
+          <div class="char-type-badge entj">ENTJ</div>
+          <div class="char-show-name">Erwin Smith</div>
+          <div class="char-series">Attack on Titan</div>
+          <div class="char-traits-mini">
+            <span>Commanding</span><span>Visionary</span><span>Ruthless</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    
+    <div style="text-align: center; margin-top: 40px;">
+      <button class="btn-ghost" id="viewAllCharsBtn" onclick="toggleCharacters()">View All Souls ↓</button>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta-section">
+    <div class="cta-card glass-card">
+      <div class="cta-decoration">✦ ✦ ✦</div>
+      <h2 class="cta-title">Ready to Find Your <span class="gradient-text">Anime Twin?</span></h2>
+      <p class="cta-desc">15 questions. Your MBTI. Your soul character. — All in under 5 minutes.</p>
+      <a href="app.html" class="btn-primary glow-btn cta-big-btn">Start the Personality Test →</a>
+      <div class="cta-note">Free · No signup · Instant results</div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer glass-panel">
+    <div class="footer-inner">
+      <div class="footer-logo">
+        <span class="logo-icon">⛩</span>
+        <span class="logo-text">Anima<span class="accent-violet">Type</span></span>
+      </div>
+      <div class="footer-note">Built with passion for anime & personality psychology</div>
+      <div class="footer-copy">© 2025 AnimaType · All rights reserved</div>
+    </div>
+  </footer>
+
+  <script src="landing.js"></script>
+</body>
+
+</html>
