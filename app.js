@@ -116,111 +116,265 @@ function updateThemeIcon(theme) {
 // DATA
 // =============================================
 
+// const MBTI_QUESTIONS = [
+//   {
+//     id: 1, text: "After a long, tiring day, what helps you recharge the most?",
+//     dimension: "EI",
+//     lowLabel: "Alone time / recharge solo",
+//     highLabel: "Social / hang out with others",
+//     lowCode: "I", highCode: "E"
+//   },
+//   {
+//     id: 2, text: "When you're in a new group of people, you usually start conversations and try to include everyone.",
+//     dimension: "EI",
+//     lowLabel: "Stay quiet, open up slowly",
+//     highLabel: "Jump in, make connections",
+//     lowCode: "I", highCode: "E"
+//   },
+//   {
+//     id: 3, text: "When making an important decision, I rely on objective logic and facts rather than emotions.",
+//     dimension: "TF",
+//     lowLabel: "Heart & emotions guide me",
+//     highLabel: "Logic & analysis guide me",
+//     lowCode: "F", highCode: "T"
+//   },
+//   {
+//     id: 4, text: "My ideal weekend involves going out, socializing, and having fun rather than staying home.",
+//     dimension: "EI",
+//     lowLabel: "Home, peace & quiet",
+//     highLabel: "Out, active & social",
+//     lowCode: "I", highCode: "E"
+//   },
+//   {
+//     id: 5, text: "When working on a project, I prefer a clear plan and deadlines over working freely at my own pace.",
+//     dimension: "JP",
+//     lowLabel: "Freedom & flexibility",
+//     highLabel: "Structure & clear plans",
+//     lowCode: "P", highCode: "J"
+//   },
+//   {
+//     id: 6, text: "When someone shares a problem with me, I instinctively comfort them emotionally rather than giving solutions.",
+//     dimension: "TF",
+//     lowLabel: "Give practical solutions",
+//     highLabel: "Offer emotional comfort",
+//     lowCode: "T", highCode: "F"
+//   },
+//   {
+//     id: 7, text: "When plans suddenly change, I adapt quickly and even enjoy the surprise.",
+//     dimension: "JP",
+//     lowLabel: "Prefer sticking to original plan",
+//     highLabel: "Enjoy adapting creatively",
+//     lowCode: "J", highCode: "P"
+//   },
+//   {
+//     id: 8, text: "In conversations, I enjoy talking about abstract ideas, dreams, and theories more than real-life topics.",
+//     dimension: "SN",
+//     lowLabel: "Real-life & concrete topics",
+//     highLabel: "Ideas, dreams & theories",
+//     lowCode: "S", highCode: "N"
+//   },
+//   {
+//     id: 9, text: "My room or workspace is usually organized, neat, and structured.",
+//     dimension: "JP",
+//     lowLabel: "Creative chaos is fine",
+//     highLabel: "Very organized & structured",
+//     lowCode: "P", highCode: "J"
+//   },
+//   {
+//     id: 10, text: "When learning something new, I prefer exploring concepts and possibilities rather than step-by-step instructions.",
+//     dimension: "SN",
+//     lowLabel: "Step-by-step, hands-on",
+//     highLabel: "Explore concepts & possibilities",
+//     lowCode: "S", highCode: "N"
+//   },
+//   {
+//     id: 11, text: "When facing a challenge, I try new and different approaches rather than relying on past experience.",
+//     dimension: "SN",
+//     lowLabel: "Use proven past experience",
+//     highLabel: "Try new different approaches",
+//     lowCode: "S", highCode: "N"
+//   },
+//   {
+//     id: 12, text: "My friends would describe me as energetic and outgoing rather than calm and thoughtful.",
+//     dimension: "EI",
+//     lowLabel: "Calm & thoughtful",
+//     highLabel: "Energetic & outgoing",
+//     lowCode: "I", highCode: "E"
+//   },
+//   {
+//     id: 13, text: "When I think about my future, I make clear plans and goals rather than keeping things open and flexible.",
+//     dimension: "JP",
+//     lowLabel: "Open, flexible & spontaneous",
+//     highLabel: "Clear plans & structured goals",
+//     lowCode: "P", highCode: "J"
+//   },
+//   {
+//     id: 14, text: "In a team, I usually take on the role of leader, motivator, or idea generator.",
+//     dimension: "EI",
+//     lowLabel: "Supportive & behind-the-scenes",
+//     highLabel: "Leader, motivator, or ideator",
+//     lowCode: "I", highCode: "E"
+//   },
+//   {
+//     id: 15, text: "When stressed, I prefer to talk it out with someone rather than staying alone and processing internally.",
+//     dimension: "EI",
+//     lowLabel: "Alone, process internally",
+//     highLabel: "Talk it out with others",
+//     lowCode: "I", highCode: "E"
+//   }
+// ];
+
 const MBTI_QUESTIONS = [
+  // E vs I
   {
-    id: 1, text: "After a long, tiring day, what helps you recharge the most?",
+    id: 1,
+    text: "It’s Friday night and you’re free. What do you actually end up doing most often?",
     dimension: "EI",
-    lowLabel: "Alone time / recharge solo",
-    highLabel: "Social / hang out with others",
-    lowCode: "I", highCode: "E"
+    lowLabel: "Stay in — chill, scroll, watch, or do your thing",
+    highLabel: "Reach out — meet, call, or go out with people",
+    lowCode: "I",
+    highCode: "E"
   },
   {
-    id: 2, text: "When you're in a new group of people, you usually start conversations and try to include everyone.",
+    id: 2,
+    text: "At a gathering where you don’t know many people:",
     dimension: "EI",
-    lowLabel: "Stay quiet, open up slowly",
-    highLabel: "Jump in, make connections",
-    lowCode: "I", highCode: "E"
+    lowLabel: "Stick with 1–2 people or observe first",
+    highLabel: "Move around and talk to multiple people",
+    lowCode: "I",
+    highCode: "E"
   },
   {
-    id: 3, text: "When making an important decision, I rely on objective logic and facts rather than emotions.",
+    id: 3,
+    text: "When something is bothering you, what happens first?",
+    dimension: "EI",
+    lowLabel: "You process it internally before sharing",
+    highLabel: "You feel the urge to talk it out quickly",
+    lowCode: "I",
+    highCode: "E"
+  },
+  {
+    id: 4,
+    text: "After a long day full of interaction, you usually feel:",
+    dimension: "EI",
+    lowLabel: "Drained — need time alone to reset",
+    highLabel: "Fine or energized — ready for more",
+    lowCode: "I",
+    highCode: "E"
+  },
+
+  // S vs N
+  {
+    id: 5,
+    text: "When choosing something to watch or read, you lean toward:",
+    dimension: "SN",
+    lowLabel: "Realistic, practical, or relatable content",
+    highLabel: "Conceptual, imaginative, or idea-driven content",
+    lowCode: "S",
+    highCode: "N"
+  },
+  {
+    id: 6,
+    text: "When learning something new:",
+    dimension: "SN",
+    lowLabel: "You prefer clear steps and examples",
+    highLabel: "You explore patterns and figure it out yourself",
+    lowCode: "S",
+    highCode: "N"
+  },
+  {
+    id: 7,
+    text: "In conversations, you naturally focus more on:",
+    dimension: "SN",
+    lowLabel: "What’s happening now or has happened",
+    highLabel: "What could happen or what it means",
+    lowCode: "S",
+    highCode: "N"
+  },
+  {
+    id: 8,
+    text: "When thinking about the future, you mostly:",
+    dimension: "SN",
+    lowLabel: "Focus on clear, realistic next steps",
+    highLabel: "Imagine different possibilities and directions",
+    lowCode: "S",
+    highCode: "N"
+  },
+
+  // T vs F
+  {
+    id: 9,
+    text: "A friend asks your opinion on something they’re excited about, but you think it won’t work:",
     dimension: "TF",
-    lowLabel: "Heart & emotions guide me",
-    highLabel: "Logic & analysis guide me",
-    lowCode: "F", highCode: "T"
+    lowLabel: "Soften your response to avoid hurting them",
+    highLabel: "Be honest, even if it’s blunt",
+    lowCode: "F",
+    highCode: "T"
   },
   {
-    id: 4, text: "My ideal weekend involves going out, socializing, and having fun rather than staying home.",
-    dimension: "EI",
-    lowLabel: "Home, peace & quiet",
-    highLabel: "Out, active & social",
-    lowCode: "I", highCode: "E"
-  },
-  {
-    id: 5, text: "When working on a project, I prefer a clear plan and deadlines over working freely at my own pace.",
-    dimension: "JP",
-    lowLabel: "Freedom & flexibility",
-    highLabel: "Structure & clear plans",
-    lowCode: "P", highCode: "J"
-  },
-  {
-    id: 6, text: "When someone shares a problem with me, I instinctively comfort them emotionally rather than giving solutions.",
+    id: 10,
+    text: "Someone in your team is underperforming:",
     dimension: "TF",
-    lowLabel: "Give practical solutions",
-    highLabel: "Offer emotional comfort",
-    lowCode: "T", highCode: "F"
+    lowLabel: "First check what’s going on with them personally",
+    highLabel: "Address the issue and its impact directly",
+    lowCode: "F",
+    highCode: "T"
   },
   {
-    id: 7, text: "When plans suddenly change, I adapt quickly and even enjoy the surprise.",
+    id: 11,
+    text: "You strongly disagree in a group discussion:",
+    dimension: "TF",
+    lowLabel: "Hold back to keep things smooth",
+    highLabel: "Speak up to express your view",
+    lowCode: "F",
+    highCode: "T"
+  },
+  {
+    id: 12,
+    text: "People usually describe your feedback style as:",
+    dimension: "TF",
+    lowLabel: "Supportive and considerate",
+    highLabel: "Straightforward and objective",
+    lowCode: "F",
+    highCode: "T"
+  },
+
+  // J vs P
+  {
+    id: 13,
+    text: "Before a trip or event, you usually:",
     dimension: "JP",
-    lowLabel: "Prefer sticking to original plan",
-    highLabel: "Enjoy adapting creatively",
-    lowCode: "J", highCode: "P"
+    lowLabel: "Keep it loose and decide on the go",
+    highLabel: "Plan things in advance",
+    lowCode: "P",
+    highCode: "J"
   },
   {
-    id: 8, text: "In conversations, I enjoy talking about abstract ideas, dreams, and theories more than real-life topics.",
-    dimension: "SN",
-    lowLabel: "Real-life & concrete topics",
-    highLabel: "Ideas, dreams & theories",
-    lowCode: "S", highCode: "N"
-  },
-  {
-    id: 9, text: "My room or workspace is usually organized, neat, and structured.",
+    id: 14,
+    text: "Your personal space most of the time:",
     dimension: "JP",
-    lowLabel: "Creative chaos is fine",
-    highLabel: "Very organized & structured",
-    lowCode: "P", highCode: "J"
+    lowLabel: "A bit messy but manageable",
+    highLabel: "Organized and in order",
+    lowCode: "P",
+    highCode: "J"
   },
   {
-    id: 10, text: "When learning something new, I prefer exploring concepts and possibilities rather than step-by-step instructions.",
-    dimension: "SN",
-    lowLabel: "Step-by-step, hands-on",
-    highLabel: "Explore concepts & possibilities",
-    lowCode: "S", highCode: "N"
-  },
-  {
-    id: 11, text: "When facing a challenge, I try new and different approaches rather than relying on past experience.",
-    dimension: "SN",
-    lowLabel: "Use proven past experience",
-    highLabel: "Try new different approaches",
-    lowCode: "S", highCode: "N"
-  },
-  {
-    id: 12, text: "My friends would describe me as energetic and outgoing rather than calm and thoughtful.",
-    dimension: "EI",
-    lowLabel: "Calm & thoughtful",
-    highLabel: "Energetic & outgoing",
-    lowCode: "I", highCode: "E"
-  },
-  {
-    id: 13, text: "When I think about my future, I make clear plans and goals rather than keeping things open and flexible.",
+    id: 15,
+    text: "When you have a deadline:",
     dimension: "JP",
-    lowLabel: "Open, flexible & spontaneous",
-    highLabel: "Clear plans & structured goals",
-    lowCode: "P", highCode: "J"
+    lowLabel: "Work in bursts, often close to the deadline",
+    highLabel: "Start early and space it out",
+    lowCode: "P",
+    highCode: "J"
   },
   {
-    id: 14, text: "In a team, I usually take on the role of leader, motivator, or idea generator.",
-    dimension: "EI",
-    lowLabel: "Supportive & behind-the-scenes",
-    highLabel: "Leader, motivator, or ideator",
-    lowCode: "I", highCode: "E"
-  },
-  {
-    id: 15, text: "When stressed, I prefer to talk it out with someone rather than staying alone and processing internally.",
-    dimension: "EI",
-    lowLabel: "Alone, process internally",
-    highLabel: "Talk it out with others",
-    lowCode: "I", highCode: "E"
+    id: 16,
+    text: "When plans suddenly change:",
+    dimension: "JP",
+    lowLabel: "You adjust without much trouble",
+    highLabel: "It feels frustrating or disruptive",
+    lowCode: "P",
+    highCode: "J"
   }
 ];
 
