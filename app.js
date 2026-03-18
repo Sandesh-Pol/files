@@ -13,7 +13,7 @@ const CHARACTER_DB = {
   'Sylvia Sherwood': { file: 'images/sylvia_sherwood.jpg', gender: 'Female', series: 'Spy x Family', mbti: 'ENTJ' },
   // INTP
   'Kakashi Hatake': { file: 'images/kakashi_hatake.jpg', gender: 'Male', series: 'Naruto', mbti: 'INTP' },
-  'Pieck Finger': { file: 'images/pieck_finger.jpg', gender: 'Female', series: 'Attack on Titan', mbti: 'INTP' },
+  'Frieren': { file: 'images/frieren.jpg', gender: 'Female', series: 'Frieren: Beyond Journey\'s End', mbti: 'INTP' },
   // ENTP
   'Satoru Gojo': { file: 'images/satoru_gojo.jpg', gender: 'Male', series: 'Jujutsu Kaisen', mbti: 'ENTP' },
   'Nico Robin': { file: 'images/niko_robin.jpg', gender: 'Female', series: 'One Piece', mbti: 'ENTP' },
@@ -743,7 +743,7 @@ async function downloadCard() {
       allowTaint: true,
       logging: false
     });
-    
+
     // Remove class immediately after capture
     document.body.classList.remove('downloading');
 
