@@ -864,21 +864,10 @@ async function downloadCard() {
 
   try {
     const bgDeep = getComputedStyle(document.documentElement).getPropertyValue('--bg-deep').trim() || '#050816';
-    const exportWrap = document.createElement('div');
-    exportWrap.style.cssText = `
-      position: absolute;
-      left: -99999px;
-      top: 0;
-      padding: 28px;
-      background: ${bgDeep};
-    `;
+    document.body.classList.add('downloading');
 
-    const clone = card.cloneNode(true);
-    exportWrap.appendChild(clone);
-    document.body.appendChild(exportWrap);
-
-    // Ensure images in the cloned card are loaded before rendering
-    const images = exportWrap.querySelectorAll('img');
+    // Ensure images in the card are loaded before rendering
+    const images = card.querySelectorAll('img');
     if (images.length > 0) {
       await Promise.all(Array.from(images).map(img => {
         if (img.complete) return Promise.resolve();
@@ -890,20 +879,22 @@ async function downloadCard() {
       }));
     }
 
-    await new Promise(resolve => setTimeout(resolve, 80));
+    await new Promise(resolve => setTimeout(resolve, 120));
 
-    const canvas = await html2canvas(exportWrap, {
+    const canvas = await html2canvas(card, {
       backgroundColor: bgDeep,
       scale: 2,
       useCORS: true,
       allowTaint: false,
-      logging: false
+      logging: false,
+      scrollX: 0,
+      scrollY: -window.scrollY
     });
 
-    document.body.removeChild(exportWrap);
+    document.body.classList.remove('downloading');
 
     const link = document.createElement('a');
-    link.download = `animatype_${(state.userName || 'result').replace(/\s+/g, '_')}_story.png`;
+    link.download = `animatype_${(state.userName || 'result').replace(/\s+/g, '_')}_card.png`;
     link.href = canvas.toDataURL('image/png', 0.95);
     link.click();
 
@@ -913,6 +904,7 @@ async function downloadCard() {
       window.location.href = 'index.html';
     }, 1500); // Small delay to ensure download starts
   } catch (e) {
+    document.body.classList.remove('downloading');
     console.error('Download error:', e);
     alert('Download failed. Try right-clicking the card and saving as image.');
   }
