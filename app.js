@@ -885,24 +885,122 @@ async function downloadCard() {
   if (!card) return;
 
   try {
-    // Add a class for print/download mode to hide backgrounds where needed
-    document.body.classList.add('downloading');
+    // Get the current result data
+    const userRow = card.querySelector('.result-user-row');
+    const userName = userRow ? userRow.querySelector('.result-user-name')?.textContent : '';
+    const mbtiBadge = userRow ? userRow.querySelector('.result-mbti-badge')?.textContent : '';
+    const fancyName = card.querySelector('.result-fancy-name')?.textContent || '';
+    const desc = card.querySelector('.result-desc')?.textContent || '';
+    const matchPct = card.querySelector('.match-pct-val')?.textContent || '0%';
+    const imgEl = card.querySelector('.result-char-img img');
+    const imgSrc = imgEl ? imgEl.src : '';
+    
+    const traits = Array.from(card.querySelectorAll('.trait-tag')).map(t => t.textContent);
 
-    const isLight = document.documentElement.getAttribute('data-theme') === 'light';
-    const canvas = await html2canvas(card, {
-      backgroundColor: isLight ? '#f0f2ff' : '#050816',
-      scale: 2,
+    // Create a new container specifically for Instagram story (1080x1920)
+    const storyCard = document.createElement('div');
+    storyCard.style.cssText = `
+      position: absolute;
+      left: -99999px;
+      top: 0;
+      width: 1080px;
+      height: 1920px;
+      background: #050816;
+      background-image: radial-gradient(circle at 20% 50%, rgba(139, 92, 246, 0.1) 0%, transparent 50%), 
+                        radial-gradient(circle at 80% 80%, rgba(139, 92, 246, 0.1) 0%, transparent 50%);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 100px 80px;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+      color: #e2e8f0;
+    `;
+
+    storyCard.innerHTML = `
+      <div style="width: 100%; max-width: 900px; display: flex; flex-direction: column; align-items: center; gap: 48px;">
+        <!-- Top bar with gradient -->
+        <div style="width: 100%; height: 6px; background: linear-gradient(90deg, #8b5cf6, #ec4899, #f59e0b, #10b981); border-radius: 10px; margin-bottom: 20px;"></div>
+        
+        <!-- User info row -->
+        <div style="width: 100%; display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+          <div style="font-size: 1rem; letter-spacing: 2px; color: #94a3b8; font-weight: 600;">${userName}</div>
+          <div style="font-size: 1.2rem; font-weight: 700; letter-spacing: 3px; padding: 10px 24px; border-radius: 30px; background: rgba(139, 92, 246, 0.2); border: 2px solid #8b5cf6; color: #a78bfa;">${mbtiBadge}</div>
+        </div>
+
+        <!-- Character image -->
+        <div style="width: 450px; height: 450px; border-radius: 24px; overflow: hidden; border: 4px solid rgba(139, 92, 246, 0.5); box-shadow: 0 24px 64px rgba(139, 92, 246, 0.4); background: linear-gradient(135deg, rgba(139, 92, 246, 0.2), rgba(34, 211, 238, 0.1)); display: flex; align-items: center; justify-content: center;">
+          ${imgSrc ? `<img src="${imgSrc}" style="width: 100%; height: 100%; object-fit: cover;" crossorigin="anonymous" />` : '<div style="font-size: 6rem;">🌸</div>'}
+        </div>
+
+        <!-- Character name -->
+        <div style="font-family: 'Pacifico', cursive; font-size: 3.5rem; text-align: center; line-height: 1.3; margin-top: 20px;">
+          ${fancyName}
+        </div>
+
+        <!-- Description -->
+        <div style="font-size: 1.4rem; line-height: 1.8; text-align: center; color: #cbd5e1; max-width: 850px;">
+          ${desc}
+        </div>
+
+        <!-- Match bar -->
+        <div style="width: 100%; margin-top: 30px;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
+            <div style="font-size: 1.1rem; font-weight: 700; letter-spacing: 2px; color: #a78bfa;">⚡ SOUL RESONANCE</div>
+            <div style="font-size: 2rem; font-weight: 700; color: #10b981;">${matchPct}</div>
+          </div>
+          <div style="width: 100%; height: 24px; background: rgba(139, 92, 246, 0.1); border-radius: 12px; overflow: hidden; border: 1px solid rgba(139, 92, 246, 0.3);">
+            <div style="height: 100%; width: ${matchPct}; background: linear-gradient(90deg, #8b5cf6, #ec4899, #10b981); border-radius: 12px; box-shadow: 0 0 20px rgba(139, 92, 246, 0.6);"></div>
+          </div>
+        </div>
+
+        <!-- Traits -->
+        <div style="display: flex; flex-wrap: wrap; gap: 16px; justify-content: center; margin-top: 30px;">
+          ${traits.map(t => `<div style="padding: 12px 24px; background: rgba(139, 92, 246, 0.15); border: 1px solid rgba(139, 92, 246, 0.4); border-radius: 30px; font-size: 1rem; color: #e2e8f0;">${t}</div>`).join('')}
+        </div>
+
+        <!-- Branding -->
+        <div style="margin-top: 50px; font-size: 1.2rem; letter-spacing: 3px; color: #64748b; font-weight: 600;">
+          ✦ ANIMATYPE ✦
+        </div>
+      </div>
+    `;
+
+    document.body.appendChild(storyCard);
+
+    // Wait for any images to load
+    const images = storyCard.querySelectorAll('img');
+    if (images.length > 0) {
+      await Promise.all(Array.from(images).map(img => {
+        if (img.complete) return Promise.resolve();
+        return new Promise(resolve => {
+          img.onload = resolve;
+          img.onerror = resolve;
+          setTimeout(resolve, 2000); // Timeout after 2s
+        });
+      }));
+    }
+
+    // Small delay to ensure rendering
+    await new Promise(resolve => setTimeout(resolve, 300));
+
+    const canvas = await html2canvas(storyCard, {
+      backgroundColor: '#050816',
+      scale: 1,
+      width: 1080,
+      height: 1920,
       useCORS: true,
-      allowTaint: true,
+      allowTaint: false,
       logging: false
     });
 
-    // Remove class immediately after capture
-    document.body.classList.remove('downloading');
+    // Remove the story card
+    document.body.removeChild(storyCard);
 
     const link = document.createElement('a');
-    link.download = `animatype_${(state.userName || 'result').replace(/\s+/g, '_')}.png`;
-    link.href = canvas.toDataURL('image/png');
+    link.download = `animatype_${(state.userName || 'result').replace(/\s+/g, '_')}_story.png`;
+    link.href = canvas.toDataURL('image/png', 0.95);
     link.click();
 
     // After download is triggered, clear data and redirect
@@ -911,7 +1009,7 @@ async function downloadCard() {
       window.location.href = 'index.html';
     }, 1500); // Small delay to ensure download starts
   } catch (e) {
-    document.body.classList.remove('downloading');
+    console.error('Download error:', e);
     alert('Download failed. Try right-clicking the card and saving as image.');
   }
 }

@@ -6,7 +6,7 @@
   <title>AnimaType — Take the Test</title>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Orbitron:wght@400;600;700;900&family=Syne:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Orbitron:wght@400;600;700;900&family=Syne:wght@400;500;600;700&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="style.css"/>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 </head>
@@ -28,7 +28,6 @@
     </a>
     <div class="nav-right">
       <div class="nav-step-label" id="navStepLabel">Step 1 of 4</div>
-      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme" onclick="toggleTheme()"><i class="fas fa-moon"></i></button>
     </div>
   </nav>
 
@@ -84,7 +83,7 @@
           </div>
         </div>
         <div class="form-error" id="step1Error"></div>
-        <button class="btn-primary glow-btn full-btn" onclick="goToStep(2)">Continue →</button>
+        <button class="btn-primary glow-btn full-btn" onclick="goToStep(2)">Next →</button>
       </div>
     </div>
 
@@ -103,7 +102,7 @@
       <div class="questions-container" id="questionsContainer"></div>
       <div class="step-nav">
         <button class="btn-ghost" onclick="goToStep(1)">← Back</button>
-        <button class="btn-primary glow-btn" onclick="goToStep(3)">Next Step →</button>
+        <button class="btn-primary glow-btn" onclick="goToStep(3)">Next →</button>
       </div>
     </div>
 
@@ -157,7 +156,7 @@
         <div class="form-error" id="step3Error"></div>
         <div class="step-nav">
           <button class="btn-ghost" onclick="goToStep(2)">← Back</button>
-          <button class="btn-primary glow-btn" onclick="goToStep(4)">Next Step →</button>
+          <button class="btn-primary glow-btn" onclick="goToStep(4)">Next →</button>
         </div>
       </div>
     </div>
@@ -195,7 +194,7 @@
         <div class="step-nav">
           <button class="btn-ghost" onclick="goToStep(3)">← Back</button>
           <button class="btn-primary glow-btn submit-btn" id="submitBtn" onclick="submitForm()">
-            <span id="submitBtnText">✦ Reveal My Anime Soul</span>
+            <span id="submitBtnText">✦ Reveal Result</span>
             <div class="btn-loader" id="btnLoader" style="display:none">
               <div class="loader-dots"><span></span><span></span><span></span></div>
             </div>
@@ -217,8 +216,8 @@
       </div>
 
       <div class="result-actions">
-        <button class="btn-primary glow-btn" onclick="downloadCard()">⬇ Download Card</button>
-        <button class="btn-ghost" onclick="resetApp()">↺ Take Again</button>
+        <button class="btn-primary glow-btn" onclick="downloadCard()">⬇ Download</button>
+        <button class="btn-ghost" onclick="resetApp()">↺ Retake</button>
       </div>
     </div>
 
