@@ -2318,6 +2318,14 @@ body.downloading .result-card {
   box-shadow: none !important;
   background: var(--bg-deep) !important;
   border-color: rgba(255, 255, 255, 0.1) !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+body.downloading .glass-card,
+body.downloading .glass-panel {
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
 }
 
 body.downloading .result-fancy-name {

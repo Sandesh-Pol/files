@@ -866,6 +866,10 @@ async function downloadCard() {
     const bgDeep = getComputedStyle(document.documentElement).getPropertyValue('--bg-deep').trim() || '#050816';
     document.body.classList.add('downloading');
 
+    if (document.fonts?.ready) {
+      await document.fonts.ready;
+    }
+
     // Ensure images in the card are loaded before rendering
     const images = card.querySelectorAll('img');
     if (images.length > 0) {
@@ -879,16 +883,22 @@ async function downloadCard() {
       }));
     }
 
-    await new Promise(resolve => setTimeout(resolve, 120));
+    await new Promise(resolve => setTimeout(resolve, 200));
+
+    const rect = card.getBoundingClientRect();
+    const scale = window.innerWidth <= 480 ? 1 : 2;
 
     const canvas = await html2canvas(card, {
       backgroundColor: bgDeep,
-      scale: 2,
+      scale,
       useCORS: true,
       allowTaint: false,
       logging: false,
+      foreignObjectRendering: true,
       scrollX: 0,
-      scrollY: -window.scrollY
+      scrollY: 0,
+      width: Math.ceil(rect.width),
+      height: Math.ceil(rect.height)
     });
 
     document.body.classList.remove('downloading');
