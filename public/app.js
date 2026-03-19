@@ -889,11 +889,8 @@ async function downloadCard() {
     // which made the character name missing in downloaded images.
     // Instead, use an HTML title with a solid-color fallback and an optional gradient overlay.
     const titleCharHtml = `
-      <div style="position: relative; width: 100%; display: flex; align-items: center; justify-content: center; padding: 6px 0 0;">
+      <div style="width: 100%; display: flex; align-items: center; justify-content: center; padding: 6px 0 0;">
         <div style="font-family: 'Cinzel Decorative', serif; font-size: 5.4rem; font-weight: 900; letter-spacing: 2px; line-height: 1.05; text-transform: uppercase; text-align: center; color: rgba(226, 232, 240, 0.92);">
-          ${safeTitleChar}
-        </div>
-        <div aria-hidden="true" style="position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-family: 'Cinzel Decorative', serif; font-size: 5.4rem; font-weight: 900; letter-spacing: 2px; line-height: 1.05; text-transform: uppercase; text-align: center; background: linear-gradient(90deg, #a78bfa, #f472b6, #fbbf24); -webkit-background-clip: text; background-clip: text; color: transparent; opacity: 0.95;">
           ${safeTitleChar}
         </div>
       </div>
